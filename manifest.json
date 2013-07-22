@@ -1,0 +1,19 @@
+{
+    "name": "Web Record",
+    "description": "Displays clicks and HTTP header in a window",
+    "version": "0.1",
+    "permissions": [
+        "tabs",
+        "debugger",
+        "notifications",
+        "*://*/*"
+    ],
+        "background": {
+        "scripts": ["background.js"]
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "Web Record"
+    },
+    "manifest_version": 2
+}

@@ -1,0 +1,64 @@
+<!--
+Copyright (c) 2012 The Chromium Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+-->
+
+<html>
+    <head>
+        <style>
+        body {
+          font-family: monospace;
+          word-wrap: break-word;
+        }
+
+        #container {
+          white-space: pre;
+        }
+
+        .header {
+        }
+        .url {
+            cursor:pointer;
+        }
+        .content {
+            display:none;
+            margin-bottom: 10px;
+        }
+        .request {
+            margin-top: 10px;
+            color:#800080;
+        }
+        .response {
+            margin-top: 10px;
+            color:blue;
+        }
+
+        .visible {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .visible .content {
+            display:block;
+        }
+
+        .css {
+          color: green;
+          font-weight: bold;
+          border-top: 1px solid green;
+        }
+
+        .header:hover,
+        .css:hover {
+            background-color:#eee;
+        }
+        </style>
+
+        <script src="jquery.min.js"></script>
+        <script src="headers.js"></script>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div id="end"></div>
+    </body>
+</html>
