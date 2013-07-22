@@ -125,10 +125,19 @@ function onEvent(debuggeeId, message, params) {
     }
 }
 
+ignore = {};
+
 function appendResponse(el, response, data) {
+    if(ignore[el.id]) {
+        return;
+    }
+
     var scroll = checkScroll()
 
-    var s = ''+response.status;
+    var s = String(response.status).replace(/\s/g, '');
+    if(s == '0') {
+        ignore[el.id] = true;
+    }
     while(s.length < 3) {
         s = ' '+s;
     }
