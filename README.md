@@ -3,7 +3,7 @@ web-record
 
 Google Chrome extension that displays clicks and HTTP header in a window
 
-# Install
+## Install
 
 Clone this repo somewhere
 `git clone git@github.com:max0d41/web-record.git`
