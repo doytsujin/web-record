@@ -20,14 +20,12 @@ window.addEventListener("load", function() {
 
 window.addEventListener("unload", function() {
     chrome.debugger.detach({tabId:tabId});
-    chrome.tabs.executeScript(tabId, {
-        code: "__terminate_tab()",
-        allFrames: true
-    });
 });
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    injectScript(tabId);
+chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab) {
+    if(tid == tabId) {
+        injectScript(tabId);
+    }
 });
 
 $.fn.isOnScreen = function(){
@@ -147,7 +145,7 @@ function appendResponse(el, response, data) {
     var req = el.find('.request');
     req.text(req.text() + '\n' + formatHeaders(response.requestHeaders));
     if(data) {
-        if(response.requestHeaders['Content-Type'] == 'application/x-www-form-urlencoded') {
+        if((response.requestHeaders['Content-Type'] || response.requestHeaders['content-type']) == 'application/x-www-form-urlencoded') {
             var d = data.split('&');
             data = [];
             for(var i in d) {
@@ -170,18 +168,18 @@ function appendResponse(el, response, data) {
 function formatHeaders(headers) {
     var text = "";
     for (name in headers) {
-        switch(name) {
-        case 'Accept':
-        case 'Accept-Encoding':
-        case 'Accept-Language':
-        case 'Cache-Control':
-        case 'Connection':
-        case 'User-Agent':
-        case 'If-Modified-Since':
-        case 'Date':
-        case 'Expires':
-        case 'Last-Modified':
-        case 'Age':
+        switch(name.toLowerCase()) {
+        case 'accept':
+        case 'accept-encoding':
+        case 'accept-language':
+        case 'cache-control':
+        case 'connection':
+        case 'user-agent':
+        case 'if-modified-since':
+        case 'date':
+        case 'expires':
+        case 'last-modified':
+        case 'age':
             break;
         default:
             text += name + ": " + headers[name] + "\n";
