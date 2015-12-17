@@ -6,6 +6,8 @@
         "tabs",
         "debugger",
         "notifications",
+        "storage",
+        "fileSystem",
         "*://*/*"
     ],
         "background": {

@@ -42,8 +42,11 @@ function __init_tab() {
         if(event.ctrlKey) {
             event.preventDefault();
         }
-        port.postMessage(cssPath(event.target));
+        var path = cssPath(event.target);
+        port.postMessage(path);
+        window.interactionHistory.push({path:path, timeStamp: event.timeStamp})
     }
+    window.interactionHistory =  window.interactionHistory || [];
     document.addEventListener('click', onclick, false);
 }
 
