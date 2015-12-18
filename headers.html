@@ -1,57 +1,67 @@
 <html>
-    <head>
-        <style>
-        body {
-          font-family: monospace;
-          word-wrap: break-word;
-        }
 
-        #container {
-          white-space: pre;
-        }
+<head>
+  <style>
+  body {
+    font-family: monospace;
+    word-wrap: break-word;
+  }
+  
+  #container {
+    white-space: pre;
+  }
+  
+  .header {}
+  
+  .url {
+    cursor: pointer;
+  }
+  
+  .content {
+    display: none;
+    margin-bottom: 10px;
+  }
+  
+  .request {
+    margin-top: 10px;
+    color: #800080;
+  }
+  
+  .response {
+    margin-top: 10px;
+    color: blue;
+  }
+  
+  .visible {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+  
+  .visible .content {
+    display: block;
+  }
+  
+  .css {
+    color: green;
+    border-top: 1px solid green;
+  }
+  
+  .header:hover,
+  .css:hover {
+    background-color: #eee;
+  }
+  </style>
+  <script src="jquery.min.js"></script>
+  <script src="underscore.js"></script>
+  <script src="headers.js"></script>
+</head>
 
-        .header {
-        }
-        .url {
-            cursor:pointer;
-        }
-        .content {
-            display:none;
-            margin-bottom: 10px;
-        }
-        .request {
-            margin-top: 10px;
-            color:#800080;
-        }
-        .response {
-            margin-top: 10px;
-            color:blue;
-        }
+<body>
+  <div id="container"></div>
+  <button type="button" id="saveButton">Save?</button>
+  <button type="button" id="playButton">RePlay</button>
+  <input type="number" id="numOfReplays" value="1"> Times!
+  <div id="end"></div>
+</body>
 
-        .visible {
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-        }
-        .visible .content {
-            display:block;
-        }
-
-        .css {
-          color: green;
-          border-top: 1px solid green;
-        }
-
-        .header:hover,
-        .css:hover {
-            background-color:#eee;
-        }
-        </style>
-
-        <script src="jquery.min.js"></script>
-        <script src="headers.js"></script>
-    </head>
-    <body>
-        <div id="container"></div>
-        <div id="end"></div>
-    </body>
 </html>
